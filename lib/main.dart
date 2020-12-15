@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
-import 'package:my_sample/widgets/random_words.dart';
+import 'package:flutter_basics/widgets/random_words.dart';
 
 void main() {
   runApp(MyApp());
@@ -112,9 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headline4,
             ),
             ButtonBar(
-              children: [
-                Text('Increase')
-              ],
+              children: [Text('Increase')],
               alignment: MainAxisAlignment.center,
             )
           ],
