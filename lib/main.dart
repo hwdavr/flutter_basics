@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:english_words/english_words.dart';
+import 'package:flutter_basics/views/image_picker.dart';
 import 'package:flutter_basics/widgets/random_words.dart';
 
 void main() {
@@ -46,7 +46,6 @@ class MyHomePage extends StatefulWidget {
   // always marked "final".
 
   final String title;
-  final wordPair = WordPair.random();
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -62,8 +61,17 @@ class _MyHomePageState extends State<MyHomePage> {
       // so that the display can reflect the updated values. If we changed
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
-      _counter = _counter + 3;
+      _counter = _counter + 1;
     });
+  }
+
+  void _navToImagePicker() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return ImagePickerPage();
+      }),
+    );
   }
 
   @override
@@ -111,9 +119,11 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headline4,
             ),
-            ButtonBar(
-              children: [Text('Increase')],
-              alignment: MainAxisAlignment.center,
+            FlatButton(
+              onPressed: _navToImagePicker,
+              child: Text(
+                "Image Picker",
+              ),
             )
           ],
         ),
