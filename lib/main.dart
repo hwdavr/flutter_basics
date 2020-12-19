@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basics/views/button_demo.dart';
+import 'package:flutter_basics/views/future_demo.dart';
 import 'package:flutter_basics/views/image_picker.dart';
+import 'package:flutter_basics/views/iosolate_demo.dart';
 import 'package:flutter_basics/views/text_demo.dart';
 
 void main() {
@@ -74,6 +76,14 @@ class _HomePageState extends State<HomePage> {
               title: Text('Image Picker'),
               onTap: () => _navigateByRoute(ImagePickerPage()),
             ),
+            ListTile(
+              title: Text('Future'),
+              onTap: () => _navigateByRoute(FuturePage()),
+            ),
+            ListTile(
+              title: Text('Isolate'),
+              onTap: () => _navigateByRoute(IsolatePage()),
+            )
           ]).toList(),
         ));
   }
