@@ -39,6 +39,7 @@ class _ImagePickerPageState extends State<ImagePickerPage> {
   }
 
   void _showPicker(context) {
+    // Show a bottom sheet dialog
     showModalBottomSheet(
         context: context,
         builder: (BuildContext bc) {
