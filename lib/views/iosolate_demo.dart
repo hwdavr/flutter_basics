@@ -32,7 +32,7 @@ class _IsolatePageState extends State<IsolatePage> {
       _counter++;
       String msg = 'notification ' + _counter.toString();
       print('SEND: ' + msg);
-      // Send the message to
+      // Send the message to MessageHandler
       sendPort.send(msg);
     });
   }

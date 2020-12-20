@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ButtonPage extends StatefulWidget {
@@ -43,7 +44,38 @@ class _ButtonPageState extends State<ButtonPage> {
                   "Flat Button",
                   style: TextStyle(color: Colors.green, fontSize: 20),
                 ),
-              )
+              ),
+              const SizedBox(height: 10),
+              RaisedButton(
+                onPressed: () {},
+                textColor: Colors.white,
+                padding: const EdgeInsets.all(0.0),
+                child: Container(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: <Color>[
+                        Color(0xFF0D47A1),
+                        Color(0xFF1976D2),
+                        Color(0xFF42A5F5),
+                      ],
+                    ),
+                  ),
+                  padding: const EdgeInsets.all(10.0),
+                  child: const Text('Gradient Button',
+                      style: TextStyle(fontSize: 20)),
+                ),
+              ),
+              const SizedBox(height: 10),
+              IconButton(
+                icon: Icon(Icons.volume_up),
+                tooltip: 'Increase volume by 1',
+                onPressed: _incrementCounter,
+              ),
+              const SizedBox(height: 10),
+              CupertinoButton.filled(
+                child: Text('iOS Button'),
+                onPressed: _incrementCounter,
+              ),
             ],
           ),
         ),

@@ -59,16 +59,45 @@ class _TextPageState extends State<TextPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               RandomWords(),
+              const SizedBox(height: 10),
               Text(
                 'You have pushed the button this many times:',
                 style: Theme.of(context).textTheme.headline6,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),
+              const SizedBox(height: 10),
               Text(
                 '$_counter',
-                style: Theme.of(context).textTheme.headline4,
+                style: TextStyle(color: Colors.green, fontSize: 24),
               ),
+              const SizedBox(height: 10),
+              RichText(
+                text: TextSpan(
+                  text: 'This is a ',
+                  style: Theme.of(context).textTheme.bodyText1,
+                  children: <TextSpan>[
+                    TextSpan(
+                        text: 'bold',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(text: ' RichText!'),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 10),
+              SelectableText(
+                'Double click to select me',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 10),
+              TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
+              )
             ],
           ),
         ),
