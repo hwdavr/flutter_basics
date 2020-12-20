@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_basics/views/button_demo.dart';
+import 'package:flutter_basics/views/dialog_demo.dart';
 import 'package:flutter_basics/views/future_demo.dart';
 import 'package:flutter_basics/views/image_picker.dart';
 import 'package:flutter_basics/views/iosolate_demo.dart';
@@ -72,6 +73,10 @@ class _HomePageState extends State<HomePage> {
             ListTile(title: Text('Text'), onTap: () => _navigateByName('text')),
             ListTile(
                 title: Text('Button'), onTap: () => _navigateByName('button')),
+            ListTile(
+              title: Text('Dialog'),
+              onTap: () => _navigateByRoute(DialogPage()),
+            ),
             ListTile(
               title: Text('Image Picker'),
               onTap: () => _navigateByRoute(ImagePickerPage()),
