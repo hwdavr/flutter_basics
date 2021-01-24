@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 
-import 'package:flutter/scheduler.dart';
-
 const owl_url =
     'https://raw.githubusercontent.com/flutter/website/master/src/images/owl.jpg';
 
@@ -49,12 +47,14 @@ class _TransformDemoState extends State<TransformDemo>
         setState(() {
           degree = controller.value;
         });
-        if (degree == 360.0) {
-          controller.repeat();
-        }
       });
 
-    controller.forward();
+    controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        controller.repeat();
+      }
+    });
+    // controller.forward();
   }
 
   @override
@@ -69,19 +69,39 @@ class _TransformDemoState extends State<TransformDemo>
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text('Dialog Demo')),
-        body: Column(
-          children: [
-            Transform(
-                child: FittedBox(
-                  fit: BoxFit.fill,
-                  child: Image.network(owl_url),
-                ),
-                alignment: FractionalOffset.center,
-                transform: perspective.scaled(1.0, 1.0, 1.0)
-                  ..rotateX(0.0)
-                  ..rotateY(degree * math.pi / 180)
-                  ..rotateZ(0.0)),
-          ],
+        body: Center(
+          child: Column(
+            children: [
+              Text(
+                'OWL',
+                style: Theme.of(context).textTheme.headline4,
+              ),
+              Transform(
+                  //child: Image.asset('assets/img/star.png'),
+                  child: Image.network(
+                    owl_url,
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) {
+                        controller.forward();
+                        return child;
+                      }
+                      return Center(
+                        child: CircularProgressIndicator(
+                          value: loadingProgress.expectedTotalBytes != null
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  loadingProgress.expectedTotalBytes
+                              : null,
+                        ),
+                      );
+                    },
+                  ),
+                  alignment: FractionalOffset.center,
+                  transform: perspective.scaled(1.0, 1.0, 1.0)
+                    ..rotateX(0.0)
+                    ..rotateY(degree * math.pi / 180)
+                    ..rotateZ(0.0)),
+            ],
+          ),
         ));
   }
 }
