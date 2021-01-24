@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/views/animations/animated_container_demo.dart';
+import 'package:flutter_basics/views/animations/fade_in_demo.dart';
+import 'package:flutter_basics/views/animations/transform_demo.dart';
 import 'package:flutter_basics/views/button_demo.dart';
+import 'package:flutter_basics/views/charts/mp_bar_chart_demo.dart';
+import 'package:flutter_basics/views/charts/mp_line_chart_demo.dart';
 import 'package:flutter_basics/views/dialog_demo.dart';
 import 'package:flutter_basics/views/future_demo.dart';
 import 'package:flutter_basics/views/image_picker.dart';
@@ -62,6 +67,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final headerStyle = Theme.of(context).textTheme.headline6;
     return Scaffold(
         appBar: AppBar(
           // Here we take the value from the HomePage object that was created by
@@ -70,6 +76,7 @@ class _HomePageState extends State<HomePage> {
         ),
         body: ListView(
           children: ListTile.divideTiles(context: context, tiles: [
+            ListTile(title: Text('Basics', style: headerStyle)),
             ListTile(title: Text('Text'), onTap: () => _navigateByName('text')),
             ListTile(
                 title: Text('Button'), onTap: () => _navigateByName('button')),
@@ -88,6 +95,28 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               title: Text('Isolate'),
               onTap: () => _navigateByRoute(IsolatePage()),
+            ),
+            ListTile(title: Text('Chart', style: headerStyle)),
+            ListTile(
+              title: Text('Bar Chart'),
+              onTap: () => _navigateByRoute(MpBarChartDemo()),
+            ),
+            ListTile(
+              title: Text('Line Chart'),
+              onTap: () => _navigateByRoute(MpLineChartDemo()),
+            ),
+            ListTile(title: Text('Animations', style: headerStyle)),
+            ListTile(
+              title: Text('Fade In/Out'),
+              onTap: () => _navigateByRoute(FadeInDemo()),
+            ),
+            ListTile(
+              title: Text('Animated Container'),
+              onTap: () => _navigateByRoute(AnimatedContainerDemo()),
+            ),
+            ListTile(
+              title: Text('Transform'),
+              onTap: () => _navigateByRoute(TransformDemo()),
             )
           ]).toList(),
         ));
