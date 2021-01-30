@@ -1,8 +1,10 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_basics/views/animations/animated_container_demo.dart';
 import 'package:flutter_basics/views/animations/fade_in_demo.dart';
 import 'package:flutter_basics/views/animations/transform_demo.dart';
 import 'package:flutter_basics/views/button_demo.dart';
+import 'package:flutter_basics/views/camera_demo.dart';
 import 'package:flutter_basics/views/charts/mp_bar_chart_demo.dart';
 import 'package:flutter_basics/views/charts/mp_line_chart_demo.dart';
 import 'package:flutter_basics/views/dialog_demo.dart';
@@ -11,7 +13,17 @@ import 'package:flutter_basics/views/image_picker.dart';
 import 'package:flutter_basics/views/iosolate_demo.dart';
 import 'package:flutter_basics/views/text_demo.dart';
 
-void main() {
+List<CameraDescription> cameras = [];
+
+Future<void> main() async {
+  // Fetch the available cameras before initializing the app.
+  try {
+    WidgetsFlutterBinding.ensureInitialized();
+    cameras = await availableCameras();
+  } on CameraException catch (e) {
+    logError(e.code, e.description);
+  }
+
   runApp(FlutterDemoApp());
 }
 
@@ -87,6 +99,10 @@ class _HomePageState extends State<HomePage> {
             ListTile(
               title: Text('Image Picker'),
               onTap: () => _navigateByRoute(ImagePickerPage()),
+            ),
+            ListTile(
+              title: Text('Camera'),
+              onTap: () => _navigateByRoute(CameraDemo(cameras)),
             ),
             ListTile(
               title: Text('Future'),
