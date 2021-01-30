@@ -7,16 +7,16 @@ import 'package:path_provider/path_provider.dart';
 import 'package:photo_view/photo_view.dart';
 import 'package:photo_view/photo_view_gallery.dart';
 
-class PhotoGalleryDemo extends StatefulWidget {
+class PhotoSliderView extends StatefulWidget {
   final String imageUri;
 
-  PhotoGalleryDemo({this.imageUri});
+  PhotoSliderView({this.imageUri});
 
   @override
-  _PhotoGalleryDemoState createState() => _PhotoGalleryDemoState();
+  _PhotoSliderViewState createState() => _PhotoSliderViewState();
 }
 
-class _PhotoGalleryDemoState extends State<PhotoGalleryDemo> {
+class _PhotoSliderViewState extends State<PhotoSliderView> {
   List<GalleryImage> galleryItems = [];
 
   @override

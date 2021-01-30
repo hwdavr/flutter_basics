@@ -3,7 +3,8 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_basics/views/photo_gallery_demo.dart';
+import 'package:flutter_basics/views/photo_grid_view.dart';
+import 'package:flutter_basics/views/photo_slider_view.dart';
 import 'package:mime/mime.dart';
 import 'package:path_provider/path_provider.dart';
 // import 'package:video_player/video_player.dart';
@@ -224,13 +225,9 @@ class _CameraDemoState extends State<CameraDemo>
 
   /// Display the thumbnail of the captured image or video.
   Widget _thumbnailWidget() {
-    if (imageFile != null) {
-      print("Image file: " +
-          imageFile.path.replaceFirst(imageFile.path.split('/').last, ''));
-    }
     return GestureDetector(
       onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => PhotoGalleryDemo())),
+          context, MaterialPageRoute(builder: (context) => PhotoGridView())),
       child: Row(mainAxisSize: MainAxisSize.max, children: <Widget>[
         imageFile == null
             ? Container(
