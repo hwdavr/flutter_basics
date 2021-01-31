@@ -1,11 +1,12 @@
 import 'dart:io';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_basics/models/gallery_image.dart';
 import 'package:photo_view/photo_view.dart';
 
 class PhotoViewPage extends StatefulWidget {
-  final String imageUri;
+  final GalleryImage image;
 
-  PhotoViewPage(this.imageUri);
+  PhotoViewPage(this.image);
 
   @override
   _PhotoViewPageState createState() => _PhotoViewPageState();
@@ -16,7 +17,7 @@ class _PhotoViewPageState extends State<PhotoViewPage> {
   Widget build(BuildContext context) {
     return Container(
         child: PhotoView(
-      imageProvider: FileImage(File(widget.imageUri)),
+      imageProvider: FileImage(File(widget.image.path)),
     ));
   }
 }

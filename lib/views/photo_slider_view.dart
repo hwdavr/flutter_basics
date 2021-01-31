@@ -35,7 +35,7 @@ class _PhotoSliderViewState extends State<PhotoSliderView> {
         final fileType = mimeStr.split('/');
         if (fileType.first == 'image') {
           final image =
-              GalleryImage(element.path, id: element.path.split('/').last);
+              GalleryImage(element.path, tag: element.path.split('/').last);
           galleryItems.add(image);
         }
       });
@@ -52,7 +52,7 @@ class _PhotoSliderViewState extends State<PhotoSliderView> {
         return PhotoViewGalleryPageOptions(
           imageProvider: FileImage(io.File(galleryItems[index].path)),
           initialScale: PhotoViewComputedScale.contained * 0.8,
-          heroAttributes: PhotoViewHeroAttributes(tag: galleryItems[index].id),
+          heroAttributes: PhotoViewHeroAttributes(tag: galleryItems[index].tag),
         );
       },
       itemCount: galleryItems.length,

@@ -2,7 +2,9 @@ import 'dart:collection';
 import 'dart:io' as io;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/common/constants.dart';
 import 'package:flutter_basics/models/gallery_image.dart';
+import 'package:flutter_basics/views/photo_hero_animation.dart';
 import 'package:flutter_basics/views/photo_view_page.dart';
 import 'package:mime/mime.dart';
 import 'package:path_provider/path_provider.dart';
@@ -32,7 +34,7 @@ class _PhotoGridViewState extends State<PhotoGridView> {
         final fileType = mimeStr.split('/');
         if (fileType.first == 'image') {
           final image =
-              GalleryImage(element.path, id: element.path.split('/').last);
+              GalleryImage(element.path, tag: element.path.split('/').last);
           galleryItems.add(image);
         }
       });
@@ -61,25 +63,36 @@ class _PhotoGridViewState extends State<PhotoGridView> {
   List<Widget> _buildGridTileList(int count) {
     return List<Widget>.generate(
         count,
-        (index) => GestureDetector(
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) =>
-                          PhotoViewPage(galleryItems[index].path))),
-              child: Container(
-                  child: new Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Image.file(
-                    io.File(galleryItems[index].path),
-                    width: 120.0,
-                    height: 100.0,
-                    fit: BoxFit.contain,
-                  ),
-                ],
-              )),
+        (index) => Card(
+              child: InkWell(
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => _getPhotoView(index))),
+                child: Container(
+                    child: new Column(
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Hero(
+                      tag: galleryItems[index].tag,
+                      child: Image.file(
+                        io.File(galleryItems[index].path),
+                        width: 120.0,
+                        height: 100.0,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
+                  ],
+                )),
+              ),
             ));
+  }
+
+  _getPhotoView(index) {
+    if (photoView == IMAGE_PHOTO_VIEW)
+      return PhotoViewPage(galleryItems[index]);
+    else
+      return PhotoHeroPage(galleryItems[index]);
   }
 }

@@ -1,6 +1,6 @@
 class GalleryImage {
-  String id;
+  String tag;
   String path;
 
-  GalleryImage(this.path, {this.id});
+  GalleryImage(this.path, {this.tag});
 }

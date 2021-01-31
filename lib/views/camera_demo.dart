@@ -3,6 +3,7 @@ import 'dart:io';
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_basics/common/constants.dart';
 import 'package:flutter_basics/views/photo_grid_view.dart';
 import 'package:flutter_basics/views/photo_slider_view.dart';
 import 'package:mime/mime.dart';
@@ -223,11 +224,19 @@ class _CameraDemoState extends State<CameraDemo>
     await controller.setZoomLevel(_currentScale);
   }
 
+  _getGalleryView() {
+    if (galleryView == GALLERY_GRID) {
+      return PhotoGridView();
+    } else {
+      return PhotoSliderView();
+    }
+  }
+
   /// Display the thumbnail of the captured image or video.
   Widget _thumbnailWidget() {
     return GestureDetector(
       onTap: () => Navigator.push(
-          context, MaterialPageRoute(builder: (context) => PhotoGridView())),
+          context, MaterialPageRoute(builder: (context) => _getGalleryView())),
       child: Row(mainAxisSize: MainAxisSize.max, children: <Widget>[
         imageFile == null
             ? Container(
