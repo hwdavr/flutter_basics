@@ -496,13 +496,15 @@ class _CameraDemoState extends State<CameraDemo>
   _onToggleCamera(isBack) {
     isBackCamera = isBack;
     int cameraIndex = isBackCamera ? 0 : 1;
-    onNewCameraSelected(widget.cameras[cameraIndex]);
+    if (widget.cameras.isNotEmpty) {
+      onNewCameraSelected(widget.cameras[cameraIndex]);
+    }
   }
 
   /// Display a row of toggle to select the camera (or a message if no camera is available).
   Widget _cameraTogglesRowWidget() {
     if (widget.cameras.isEmpty) {
-      return const Text('No camera found');
+      return const Text('No camera');
     } else if (widget.cameras.length == 1) {
       return Switch(
         value: isBackCamera,

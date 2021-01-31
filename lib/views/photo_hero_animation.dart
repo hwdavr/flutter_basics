@@ -18,6 +18,7 @@ class _PhotoHeroPageState extends State<PhotoHeroPage> {
         child: Hero(
       tag: widget.image.tag,
       child: Image.file(File(widget.image.path)),
+      transitionOnUserGestures: true,
     ));
   }
 }

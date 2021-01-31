@@ -82,6 +82,7 @@ class _PhotoGridViewState extends State<PhotoGridView> {
                         height: 100.0,
                         fit: BoxFit.contain,
                       ),
+                      transitionOnUserGestures: true,
                     ),
                   ],
                 )),
