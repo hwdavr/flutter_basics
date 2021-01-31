@@ -4,7 +4,7 @@ import 'package:flutter_basics/views/animations/animated_container_demo.dart';
 import 'package:flutter_basics/views/animations/fade_in_demo.dart';
 import 'package:flutter_basics/views/animations/transform_demo.dart';
 import 'package:flutter_basics/views/button_demo.dart';
-import 'package:flutter_basics/views/camera_demo.dart';
+import 'package:flutter_basics/views/photo/camera_demo.dart';
 import 'package:flutter_basics/views/charts/mp_bar_chart_demo.dart';
 import 'package:flutter_basics/views/charts/mp_line_chart_demo.dart';
 import 'package:flutter_basics/views/dialog_demo.dart';

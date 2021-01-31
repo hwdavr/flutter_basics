@@ -4,8 +4,8 @@ import 'dart:io' as io;
 import 'package:flutter/material.dart';
 import 'package:flutter_basics/common/constants.dart';
 import 'package:flutter_basics/models/gallery_image.dart';
-import 'package:flutter_basics/views/photo_hero_animation.dart';
-import 'package:flutter_basics/views/photo_view_page.dart';
+import 'package:flutter_basics/views/photo/photo_hero_animation.dart';
+import 'package:flutter_basics/views/photo/photo_view_page.dart';
 import 'package:mime/mime.dart';
 import 'package:path_provider/path_provider.dart';
 
